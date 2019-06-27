@@ -24,15 +24,26 @@ public class MainClass {
 	    si = new JedisShardInfo("10.0.0.12", 6379);
 	    shards.add(si);
 	    
-
+//integrate in main code
+	    //multi threading here using random values
+	    //
 	    ShardedJedis jedis = new ShardedJedis(shards);
 	    System.out.println("pohonche kya shard setup tak????");
-	    jedis.set("foo_first", "foo1");
+	    int i;
+	    String key;
+	    String value;
+	    for(i=0;i<=500;i++){
+	    	key=Integer.toString(i+100);
+	    	value="constant";
+	    	jedis.set(key, value);
+	    }
+	    	    
+	 /*   jedis.set("foo_first", "foo1");
 	    jedis.set("foo_secod", "foo2");
 	    jedis.set("foo_third", "foo3");
 	    jedis.set("foo_fourth", "foo4");
 	    jedis.set("foo_fifth", "foo5");
-	    jedis.set("foo_sixth", "foo6");
+	    jedis.set("foo_sixth", "foo6");*/
 	    
 	    System.out.println("dekho chaacha keys bhi set kardi");
 	    
