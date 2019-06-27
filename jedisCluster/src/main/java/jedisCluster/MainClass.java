@@ -27,7 +27,15 @@ public class MainClass {
 
 	    ShardedJedis jedis = new ShardedJedis(shards);
 	    System.out.println("pohonche kya shard setup tak????");
-	    //jedis.set("foo_first", "foo");
+	    jedis.set("foo_first", "foo1");
+	    jedis.set("foo_secod", "foo2");
+	    jedis.set("foo_third", "foo3");
+	    jedis.set("foo_fourth", "foo4");
+	    jedis.set("foo_fifth", "foo5");
+	    jedis.set("foo_sixth", "foo6");
+	    
+	    System.out.println("dekho chaacha keys bhi set kardi");
+	    
 		
 		
 		/*
