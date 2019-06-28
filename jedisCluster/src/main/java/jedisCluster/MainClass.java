@@ -32,7 +32,7 @@ public class MainClass {
 	    int i;
 	    String key;
 	    String value;
-	    for(i=0;i<=500;i++){
+	    for(i=0;i<=10000;i++){
 	    	key=Integer.toString(i+100);
 	    	value="constant";
 	    	jedis.set(key, value);
