@@ -32,7 +32,7 @@ public class MainClass {
 	    int i;
 	    String key;
 	    String value;
-	    for(i=0;i<=10000;i++){
+	    for(i=0;i<=500;i++){
 	    	key=Integer.toString(i+100);
 	    	value="constant";
 	    	jedis.set(key, value);
@@ -61,7 +61,6 @@ public class MainClass {
 		Set<HostAndPort> jedisClusterNodes = new HashSet<HostAndPort>();
 		jedisClusterNodes.add(new HostAndPort("10.0.0.4", 6379));
 		//jedisClusterNodes.add(new HostAndPort("10.0.0.12", 6379));
-
 		System.out.println("cluster node set initialised");
 		JedisCluster jedis = new JedisCluster(jedisClusterNodes);
 		System.out.println("this line is after creation of jedisCluster");
