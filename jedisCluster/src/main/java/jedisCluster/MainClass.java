@@ -8,8 +8,10 @@ import java.util.Set;
 import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisCluster;
+import redis.clients.jedis.JedisPoolConfig;
 import redis.clients.jedis.JedisShardInfo;
 import redis.clients.jedis.ShardedJedis;
+import redis.clients.jedis.ShardedJedisPool;
 
 public class MainClass {
 
@@ -27,16 +29,32 @@ public class MainClass {
 //integrate in main code
 	    //multi threading here using random values
 	    //
-	    ShardedJedis jedis = new ShardedJedis(shards);
-	    System.out.println("pohonche kya shard setup tak????");
-	    int i;
+	    //ShardedJedis jedis = new ShardedJedis(shards);
+	   // System.out.println("pohonche kya shard setup tak????");
+	    JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
+	    ShardedJedisPool pool = new ShardedJedisPool(jedisPoolConfig, shards);
+
+	    ShardedJedis jedis = pool.getResource();
+	    jedis.set("a", "foo1");
+	    jedis.set("b", "foo2");
+	    jedis.set("c", "foo3");
+	    jedis.set("d", "foo4");
+	    jedis.set("e", "foo5");
+	    jedis.set("f", "foo6");
+	    jedis.set("g", "foo7");
+	    
+
+	    
+
+	    pool.close();
+	    /*int i;
 	    String key;
 	    String value;
 	    for(i=0;i<=10;i++){
 	    	key=Integer.toString(i+100);
 	    	value="constant";
 	    	jedis.set(key, value);
-	    }
+	    }*/
 	    	    
 	 /*   jedis.set("foo_first", "foo1");
 	    jedis.set("foo_secod", "foo2");
