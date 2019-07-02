@@ -35,26 +35,21 @@ public class MainClass {
 	    ShardedJedisPool pool = new ShardedJedisPool(jedisPoolConfig, shards);
 
 	    ShardedJedis jedis = pool.getResource();
-	    jedis.set("a", "foo1");
-	    jedis.set("b", "foo2");
-	    jedis.set("c", "foo3");
-	    jedis.set("d", "foo4");
-	    jedis.set("e", "foo5");
-	    jedis.set("f", "foo6");
-	    jedis.set("g", "foo7");
+	
 	    
 
 	    
 
-	    pool.close();
-	    /*int i;
+	    
+	    int i;
 	    String key;
 	    String value;
-	    for(i=0;i<=10;i++){
+	    for(i=0;i<1000;i++){
 	    	key=Integer.toString(i+100);
 	    	value="constant";
 	    	jedis.set(key, value);
-	    }*/
+	    }
+	    pool.close();
 	    	    
 	 /*   jedis.set("foo_first", "foo1");
 	    jedis.set("foo_secod", "foo2");
